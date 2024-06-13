@@ -1,38 +1,132 @@
-.App {
-  text-align: center;
+/* @import url('https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Podkova&family=Sorts+Mill+Goudy:ital@0;1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Podkova&family=Sorts+Mill+Goudy:ital@0;1&display=swap');
+
+.container {
+  display: grid;
+  grid-template-columns: 30% 70%; /* Two columns with equal width */
+  gap: 40px; /* Adjust the gap between columns */
+  /* Hide any overflow content */
+  height: 100vh; /* Make the container take the full viewport height */
+  max-width: 80%; /* Limit container width to 50% on large screens */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.left-column {
+  background-color: rgb(255, 255, 255); /* Example background color for the left column */
+  /* Add any other styles you want for the left column */
+  overflow: hidden; /* Hide overflow content */
+  text-align: right;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.right-column {
+  background-color: #ffffff; /* Example background color for the right column */
+  /* Add any other styles you want for the right column */
+  overflow-y: scroll;
+  height: 100%;
+}
+
+p {
+  font-size: 18px;
+  /* font-family: "Podkova", serif;
+  font-weight: 300; */
+  /* font-family: "Sorts Mill Goudy", serif;
+  font-weight: 400;
+  font-style: normal; */
+  font-family: "Livvic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1, h2 {
+  font-size: 32px;
+  font-family: "Podkova", serif;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 24px;
+  font-family: "Podkova", serif;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0, 60, 255);
+}
+
+.iconAHref {
+  text-decoration: none;
+  color: black;
+} 
+
+.icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+}
+
+.photo {  
+  /* width: 200px;
+  height: 200px; */
+  border-radius: 5%;
+  float: right;
+  display: block;
+  margin-bottom: 25px ;
+}
+
+.links {
+  display: block;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.links > p {
+  padding-bottom: 0px;
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+
+@media (min-width: 500px) {
+  .right-column {
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #F0EFEB;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Media query for mobile devices */
+@media (max-width: 500px) {
+  .container {
+    display: block;
+    max-width: 90%;
+    height: 100%;
+  }
+  .left-column {
+    text-align: left;
+  }
+  .left-column, .right-column {
+    display: block;
+    overflow: hidden;
+  }
+  .photo {  
+    /* width: 200px;
+    height: 200px;
+    border-radius: 50%; */
+    float: left;
+    display: block;
+  }
+  .links {
+    text-align: right;
+  }
+
 }
 
-.App-link {
-  color: #61dafb;
+@media (min-width: 500px) and (max-width: 820px) {
+  .container {
+    /* display: block; */
+    max-width: 90%;
+    margin: 0 auto;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
