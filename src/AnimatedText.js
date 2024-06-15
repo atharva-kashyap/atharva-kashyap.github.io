@@ -15,7 +15,7 @@ const AnimatedText = () => {
       </style>
       {isVisible && (
         <p style={{ "font-family": "Podkova, serif", "font-weight": "600", display: 'inline-block' }}>
-          {Array.from("Hello!👋 Thanks for visiting!🙏").map((char, index) => (
+          {Array.from("Hiya!👋 Thanks for stopping by!🙏").map((char, index) => (
             <span
               key={index}
               style={{

@@ -37,9 +37,9 @@ function App() {
 
       <div className="right-column">
         <AnimatedText />
-        <p>I am an incoming first-year <strong>Robotics</strong> Ph.D. student at the <a href='https://robotics.umich.edu/'>University of Michigan</a>, advised by Prof. <a href='https://patricialvesoliveira.com/'>Patricia Alves-Oliveira</a> and graciously supported by the Robotics Departmental Fellowship. My research interests broadly lie in Assistive Robotics and Human-Robot Interaction.</p>
+        <p>I am an incoming first-year <strong>Robotics</strong> Ph.D. student at the <a href='https://robotics.umich.edu/' target="_blank">University of Michigan</a>, advised by Prof. <a href='https://patricialvesoliveira.com/' target="_blank">Patricia Alves-Oliveira</a> and graciously supported by the Robotics Departmental Fellowship. My research interests broadly lie in Assistive Robotics and Human-Robot Interaction.</p>
 
-        <p>I completed my bachelor's degree in <strong>Computer Science</strong> from the <a href="https://www.cs.washington.edu/">Paul G. Allen School of Computer Science & Engineering</a> at the <a href='http://www.washington.edu/'>University of Washington</a> (UW), Seattle. I also minored in <strong>Applied Mathematics</strong> and <strong>Education, Learning & Societies</strong>.</p>
+        <p>I completed my bachelor's degree in <strong>Computer Science</strong> from the <a href="https://www.cs.washington.edu/" target="_blank">Paul G. Allen School of Computer Science & Engineering</a> at the <a href='http://www.washington.edu/' target="_blank">University of Washington</a> (UW), Seattle. I also minored in <strong>Applied Mathematics</strong> and <strong>Education, Learning & Societies</strong>.</p>
 
         <hr className="divider" />
 
@@ -81,12 +81,10 @@ function App() {
           </div>
         ) : (<div>
           <h3>Amazon Robotics Manipulation Project</h3>
-          <p>During Summer 2022, I worked as a Software Development Engineering Intern on a Robotics project (at UW + Amazon Science Hub). I developed a web application to conduct evaluations. An evaluation entailed scanning and stowing Amazon products into bins and then allowing the robot to pick specified items from the bins. The web application served as a live interface (by displaying various bin metrics) for users to track the progress of the evaluation.</p>
-          <p>[<a href='https://github.com/au-rmr/aurmr_inventory' target="_blank">GitHub</a>]</p>
+          <p>During Summer 2022, I worked as a Software Development Engineering Intern on a Robotics project (at UW + Amazon Science Hub). I developed a web application to conduct evaluations. An evaluation entailed scanning and stowing Amazon products into bins and then allowing the robot to pick specified items from the bins. The web application served as a live interface (by displaying various bin metrics) for users to track the progress of the evaluation. [<a href='https://github.com/au-rmr/aurmr_inventory' target="_blank">GitHub</a>]</p>
 
           <h3>Arc Security</h3>
-          <p>I served as the VP of Engineering for a local startup, Arc Security. I oversaw a team of 4 developers, managed timelines, and conducted user testing. We developed a product that consisted of mobile and web applications to foster real estate safety. The mobile app enabled agents to track their safety during on-site visits and the web app enabled managers to track agent safety.</p>
-          <p>[<a href='https://github.com/arc-securitas/webapp' target="_blank">GitHub</a>]</p>
+          <p>I served as the VP of Engineering for a local startup, Arc Security. I oversaw a team of 4 developers, managed timelines, and conducted user testing. We developed a product that consisted of mobile and web applications to foster real estate safety. The mobile app enabled agents to track their safety during on-site visits and the web app enabled managers to track agent safety. [<a href='https://github.com/arc-securitas/webapp' target="_blank">GitHub</a>]</p>
 
           <h3>Other</h3>
           <p>I served as the Technical Director of a UW organization, <a href='https://dubvelopersuw.org/' target="_blank">DUBvelopers</a>, where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
