@@ -29,9 +29,10 @@ function App() {
         <div className='links'>
           <p><a className="iconAHref" href='mailto:katharva@umich.edu'><u>Email Me:</u></a> katharva@umich.edu&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faEnvelope} size="lg" /></p>
           <p><a className="iconAHref" href='https://www.github.com/atharva-kashyap/' target="_blank"><u>GitHub</u></a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faGithub} size="lg" /></p>
-          <p><a className="iconAHref" href='https://www.https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en&oi=ao.com/atharva-kashyap/' target="_blank"><u>Google Scholar</u></a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" /></p>
+          <p><a className="iconAHref" href='https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en' target="_blank"><u>Google Scholar</u></a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" /></p>
           <p><a className="iconAHref" href='https://www.linkedin.com/in/atharva-kashyap/' target="_blank"><u>LinkedIn</u></a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faLinkedin} size="lg" /></p>
-          <p><a className="iconAHref" href='https://drive.google.com/file/d/1ECaCapx7_ZF_z1mGyR656TcuoX6DbFmi/view?usp=sharing' target="_blank"><u>1-page Resume</u></a> / <a className="iconAHref" href='https://drive.google.com/file/d/1jPm_Et-cJICGZ2u_ttCNznor17O_dTZx/view?usp=sharing' target="_blank"><u>CV</u></a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faFile} size="lg" /></p>
+          <p><a className="iconAHref" href='https://drive.google.com/file/d/17x1r_ySEph4GeXJEb1oVfsbtvmCgOQIx/view?usp=sharing' target="_blank"><u>1-page Resume</u></a> / <a className="iconAHref" href='https://drive.google.com/file/d/1DcwGQ3ZqPY8mVLpUefN-M7AWL-JTWcqF/view?usp=drive_link' target="_blank"><u>CV</u></a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faFile} size="lg" /></p>
+          <p><i>Last Updated: June 2024</i></p>
         </div>
       </div>
 
