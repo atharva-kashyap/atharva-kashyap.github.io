@@ -57,15 +57,33 @@ h3, summary {
   font-weight: 700;
 }
 
-a {
-  text-decoration: none;
-  color: rgb(0, 60, 255);
-}
-
 .iconAHref {
   text-decoration: none;
   color: black;
 } 
+
+.expandButton {
+  background: none;
+  border: none;
+  margin-bottom: 30px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+a, .expandButton {
+  text-decoration: underline;
+  /* text-decoration-color: rgb(0, 60, 255); */
+  text-decoration-color: #0F7AAF;
+  color: rgb(0, 0, 0);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 2px;
+  text-decoration-skip-ink: none;
+}
+
+button > p {
+  margin: 0;
+}
 
 .icon {
   display: inline-block;
@@ -73,23 +91,30 @@ a {
   height: 22px;
 }
 
-.photo {  
-  max-width: 100%;
-  /* width: 200px;
-  height: 200px; */
-  border-radius: 5%;
-  float: right;
-  display: block;
-  margin-bottom: 25px ;
+.clearfix {
+  content: "";
+  display: table;
+  clear: both;
+  /* max-width: 100%; */
+  /* display: block; */
 }
 
-.links {
+.photo {  
+  max-width: 75%;
+  /* width: 200px;
+  height: auto; */
+  border-radius: 10%;
+  float: right;
+  display: block;
+}
+
+.links-right, .links-left {
   display: block;
   padding-top: 25px;
   padding-bottom: 25px;
 }
 
-.links > p {
+.links-right > p, .links-left > p {
   padding-bottom: 0px;
   margin-bottom: 5px;
   margin-top: 0px;
@@ -102,11 +127,14 @@ a {
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
-@media (min-width: 500px) {
+@media (min-width: 1200px) {
   .right-column {
     padding-left: 25px;
     padding-right: 25px;
     background-color: #F0EFEB;
+  }
+  .links-left {
+    display: none;
   }
 }
 
@@ -125,23 +153,53 @@ a {
     overflow: hidden;
   }
   .photo {  
-    /* width: 200px;
-    height: 200px;
-    border-radius: 50%; */
     float: left;
     display: block;
   }
-  .links {
-    text-align: right;
+  .links-right {
+    display: none;
   }
-
 }
 
-@media (min-width: 500px) and (max-width: 820px) {
-  .container {
-    /* display: block; */
+@media (min-width: 500px) and (max-width: 1200px) {
+  /* .container {
     max-width: 90%;
     margin: 0 auto;
+  } */
+
+  .container {
+    display: block;
+    max-width: 60%;
+    height: 100%;
+  }
+  .left-column {
+    text-align: left;
+  }
+  .left-column, .right-column {
+    display: block;
+    overflow: hidden;
+  }
+  .photo {  
+    float: left;
+    display: block;
+    max-width: 50%;
+  }
+  .links-right {
+    display: none;
+  }
+}
+
+@media (min-width: 820px) and (max-width: 1200px) {
+  .photo {  
+    float: left;
+    display: block;
+    max-width: 35%;
+  }
+}
+
+@media (min-width: 1800px) {
+  .container {
+    max-width: 55%;
   }
 }
 
