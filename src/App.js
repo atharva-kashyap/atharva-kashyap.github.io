@@ -1,5 +1,5 @@
 import './App.css';
-import highQualityImage from './ask4.jpg'; // new JPG image
+import highQualityImage from './ask5.jpg'; // new JPG image
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faGraduationCap, faFile, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -30,7 +30,7 @@ function App() {
       <p>I designed the overall state machine and implemented the first version of the app [<a href='https://github.com/personalrobotics/feeding_web_interface' target="_blank">GitHub</a>], which interspersed asking for user input (e.g., what bite users want) with displaying the current state of the robot (e.g., robot is attempting to acquire bite). Several of these components required running smaller user studies. For instance, we were unsure how users would prefer to specify which piece of food they want the robot to feed. Would they prefer to see a picture of the plate and click on their desired food, or would they rather have labels of the food items (e.g., “strawberry”, “salad”) to choose from? [<a href='https://drive.google.com/file/d/18S-5EefBi_lWHtQcQSPkr3Nc1qD13SbC/view?usp=sharing' target="_blank">Poster</a>, May 2023]</p>
 
       <p>In addition, the system required the user to manually confirm the presence of food on the fork, which can be cumbersome for some users. I worked to develop an automatic Food on Fork (FoF) algorithm to confirm the presence of food on the fork. [<a href='https://github.com/personalrobotics/ada_feeding' target="_blank">GitHub</a>]</p>
-      <p>[<a href='https://dl.acm.org/doi/10.1145/3610978.3641085' target="_blank">HRI 2024 Demo Paper</a>] [In the News: <a href='https://www.geekwire.com/2023/uw-computer-science-research-event-offers-a-glimpse-of-the-future-at-the-dawn-of-ai/' target="_blank">GeekWire</a>, <a href='https://news.cs.washington.edu/2023/11/21/theres-so-much-great-research-here-the-case-for-open-language-models-and-other-food-for-thought-from-the-allen-schools-2023-research-showcase/' target="_blank">Allen School News</a>]</p>
+      <p>[<a href='https://personalrobotics.cs.washington.edu/publications/nanavati2025lessons.pdf' target="_blank">HRI 2025 Paper</a>, <a href='https://robotfeeding.io/publications/hri25a/' target="_blank">Website</a>] [<a href='https://dl.acm.org/doi/10.1145/3610978.3641085' target="_blank">HRI 2024 Demo Paper</a>] [In the News: <a href='https://www.washington.edu/news/2025/03/04/assistive-feeding-robot-gets-tested-outside-the-lab/' target='_blank'>UW News</a>, <a href='https://www.geekwire.com/2023/uw-computer-science-research-event-offers-a-glimpse-of-the-future-at-the-dawn-of-ai/' target="_blank">GeekWire</a>, <a href='https://news.cs.washington.edu/2023/11/21/theres-so-much-great-research-here-the-case-for-open-language-models-and-other-food-for-thought-from-the-allen-schools-2023-research-showcase/' target="_blank">Allen School News</a>]</p>
     </div>
   );
 
@@ -61,8 +61,8 @@ function App() {
           <p><FontAwesomeIcon className="icon" icon={faGithub} size="lg" />&nbsp;&nbsp;&nbsp;GitHub: <a href='https://www.github.com/atharva-kashyap/' target="_blank">atharva-kashyap</a></p>
           <p><FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" />&nbsp;&nbsp;&nbsp;<a href='https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en' target="_blank">Google Scholar</a></p>
           <p><FontAwesomeIcon className="icon" icon={faLinkedin} size="lg" />&nbsp;&nbsp;&nbsp;LinkedIn: <a href='https://www.linkedin.com/in/atharva-kashyap/' target="_blank">in/atharva-kashyap</a></p>
-          <p><FontAwesomeIcon className="icon" icon={faFile} size="lg" />&nbsp;&nbsp;&nbsp;<a href='https://drive.google.com/file/d/17x1r_ySEph4GeXJEb1oVfsbtvmCgOQIx/view?usp=sharing' target="_blank">1-page Resume</a> / <a href='https://drive.google.com/file/d/1DcwGQ3ZqPY8mVLpUefN-M7AWL-JTWcqF/view?usp=drive_link' target="_blank">CV</a></p>
-          <p><i>Last Updated: October 2024</i></p>
+          <p><FontAwesomeIcon className="icon" icon={faFile} size="lg" />&nbsp;&nbsp;&nbsp;<a href='https://drive.google.com/file/d/17x1r_ySEph4GeXJEb1oVfsbtvmCgOQIx/view?usp=sharing' target="_blank">1-page Resume</a> / <a href='https://drive.google.com/file/d/1sMsRdatpKY5pY6hJGkSg-NMXqe-3-EVH/view?usp=sharing' target="_blank">CV</a></p>
+          <p><i>Last Updated: March 2025</i></p>
           <p><small>made with <FontAwesomeIcon icon={faHeart} /> by Atharva</small></p>
         </div>
         <div className='links-right'>
@@ -70,15 +70,15 @@ function App() {
           <p>GitHub: <a href='https://www.github.com/atharva-kashyap/' target="_blank">atharva-kashyap</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faGithub} size="lg" /></p>
           <p><a href='https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en' target="_blank">Google Scholar</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" /></p>
           <p>LinkedIn: <a href='https://www.linkedin.com/in/atharva-kashyap/' target="_blank">in/atharva-kashyap</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faLinkedin} size="lg" /></p>
-          <p><a href='https://drive.google.com/file/d/17x1r_ySEph4GeXJEb1oVfsbtvmCgOQIx/view?usp=sharing' target="_blank">1-page Resume</a> / <a href='https://drive.google.com/file/d/1DcwGQ3ZqPY8mVLpUefN-M7AWL-JTWcqF/view?usp=drive_link' target="_blank">CV</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faFile} size="lg" /></p>
-          <p><i>Last Updated: October 2024</i></p>
+          <p><a href='https://drive.google.com/file/d/17x1r_ySEph4GeXJEb1oVfsbtvmCgOQIx/view?usp=sharing' target="_blank">1-page Resume</a> / <a href='https://drive.google.com/file/d/1sMsRdatpKY5pY6hJGkSg-NMXqe-3-EVH/view?usp=sharing' target="_blank">CV</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faFile} size="lg" /></p>
+          <p><i>Last Updated: March 2025</i></p>
           <p><small>made with <FontAwesomeIcon icon={faHeart} /> by Atharva</small></p>
         </div>
       </div>
 
       <div className="right-column">
         <AnimatedText />
-        <p>I am a first-year <strong>Robotics</strong> Ph.D student at the <a href='https://robotics.umich.edu/' target="_blank">University of Michigan</a>, advised by Prof. <a href='https://patricialvesoliveira.com/' target="_blank">Patricia Alves-Oliveira</a> and graciously supported by the Robotics Departmental Fellowship. My research interests broadly lie in Assistive Robotics and Human-Robot Interaction.</p>
+        <p>I am a first-year <strong>Robotics</strong> Ph.D student at the <a href='https://robotics.umich.edu/' target="_blank">University of Michigan</a>, advised by Dr. <a href='https://patricialvesoliveira.com/' target="_blank">Patricia Alves-Oliveira</a> and graciously supported by the Robotics Departmental Fellowship. My research interests broadly lie in Assistive Robotics and Human-Robot Interaction.</p>
 
         <p>I completed my bachelor's degree in <strong>Computer Science</strong> from the <a href="https://www.cs.washington.edu/" target="_blank">Paul G. Allen School of Computer Science & Engineering</a> at the <a href='http://www.washington.edu/' target="_blank">University of Washington</a> (UW), Seattle. I also minored in <strong>Applied Mathematics</strong> and <strong>Education, Learning & Societies</strong>.</p>
 
@@ -101,7 +101,7 @@ function App() {
           <div>
             <div>
               <h3>Robot Studio</h3>
-              <p>Currently, I am a research assistant at UM's Robot Studio, under the mentorship of Prof. <a href="https://patricialvesoliveira.com/" target="_blank">Patricia Alves-Oliveira</a>. My research focuses broadly on Assistive Robotics for people with physical disabilities, with an emphasis on using LLMs to personalize these systems based on user's changing needs.</p>
+              <p>Currently, I am a research assistant at UM's <a href='https://www.robotdesign.studio/' target="_blank">Robot Studio</a>, where my research focuses broadly on assistive robotics for people with physical disabilities, with an emphasis on using LLMs to personalize these systems based on user's changing needs.</p>
             </div>
             <CollapsibleSection title="Personal Robotics Lab" content_without_expand={prl_content_without_expand} content={prl_content} />
           </div>
