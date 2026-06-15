@@ -18,6 +18,12 @@ import lisbonTram from './travel-images/lisbon-tram.jpg'
 import portoAtlantic from './travel-images/porto-atlantic.jpg'
 import portoScenery from './travel-images/porto-scenery.jpg'
 
+// dog images
+import dog1 from './dogs/dog1.jpg'
+import dog2 from './dogs/dog2.jpg'
+import dog3 from './dogs/dog3.jpg'
+import dog6 from './dogs/dog6.png'
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faGraduationCap, faFile, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -173,6 +179,23 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const dog_images = [
+    { src: dog6, alt: "A dog I walked" },
+    { src: dog1, alt: "A dog I walked" },
+    { src: dog2, alt: "A dog I walked" },
+    { src: dog3, alt: "A dog I walked" },
+  ];
+
+  const dogs_content = (
+    <div className="travel-collage">
+      {dog_images.map((img, i) => (
+        <figure className="travel-item" key={i}>
+          <img className="travel-photo" src={img.src} alt={img.alt} />
+        </figure>
+      ))}
+    </div>
+  );
+
   const travel_content = (
     <div className="travel-collage">
       {shuffled_travel_images.map((img, i) => (
@@ -264,7 +287,7 @@ function App() {
             <Tab value={1} label="Research" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
             <Tab value={2} label="Teaching" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
             <Tab value={3} label="Professional" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
-            <Tab value={4} label="Travel" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
+            <Tab value={4} label="Other" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
           </Tabs>
         </Box>
         {isOther === 0 ? (
@@ -302,15 +325,16 @@ function App() {
               <h3>Arc Security</h3>
               <p>I served as the VP of Engineering for a local startup (now, defunct), <a href='https://dubvelopersuw.org/' target="_blank">Arc Security</a>. I oversaw a team of 4 developers, managed timelines, and conducted user testing. We developed a product that consisted of mobile and web applications to foster real estate safety. The mobile app enabled agents to track their safety during on-site visits while the web app enabled managers to track agent safety. [<a href='https://github.com/arc-securitas/webapp' target="_blank">GitHub</a>]</p>
             </div>
-            <div>
-              <h3>Other</h3>
-              <p>I served as the Technical Director of a UW organization, <a href='https://dubvelopersuw.org/' target="_blank">DUBvelopers</a>, where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
-
-              <p>I love dogs. I walk dogs at <a href='https://www.hshv.org/' target="_blank">HSHV</a> (previously, at <a href='https://detroitdogrescue.com/' target="_blank">DDR</a> and <a href='https://www.seattlehumane.org/' target="_blank">SH</a>). I have also helped with dog training classes, been an education volunteer supporting the Humane Teen Club (HTC) to explore animal welfare topics. Before that, I, myself, was a HTC member!</p>
-            </div>
           </div>
         ) : (
           <div>
+            <h3>Web Dev Mentor</h3>
+            <p>I served as the Technical Director of a UW organization, <a href='https://dubvelopersuw.org/' target="_blank">DUBvelopers</a>, where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
+
+            <h3>Random...</h3>
+            <p>I love dogs! I walk dogs at <a href='https://www.hshv.org/' target="_blank">HSHV</a> (previously, at <a href='https://detroitdogrescue.com/' target="_blank">DDR</a> and <a href='https://www.seattlehumane.org/' target="_blank">SH</a>). I have also helped with dog training classes, been an education volunteer supporting the Humane Teen Club (HTC) to explore animal welfare topics. Before that, I, myself, was a HTC member!</p>
+            {dogs_content}
+
             <p>I enjoy travelling, taking pictures, and exploring new places.</p>
             {travel_content}
           </div>
