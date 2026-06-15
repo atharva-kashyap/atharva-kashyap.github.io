@@ -8,7 +8,7 @@
   gap: 40px; /* Adjust the gap between columns */
   /* Hide any overflow content */
   height: 100vh; /* Make the container take the full viewport height */
-  max-width: 80%; /* Limit container width to 50% on large screens */
+  max-width: 70%; /* Limit container width to 50% on large screens */
   margin: 0 auto; /* Center the container horizontally */
 }
 
@@ -89,6 +89,7 @@ button > p {
   display: inline-block;
   width: 22px;
   height: 22px;
+  color: #0F7AAF;
 }
 
 .clearfix {
@@ -120,11 +121,109 @@ button > p {
   margin-top: 0px;
 }
 
+.links-right-icons, .links-left-icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.links-right-icons {
+  justify-content: center;
+  width: 75%;
+  margin-left: auto;
+}
+
+.links-left-icons {
+  justify-content: center;
+  width: 75%;
+  margin-right: auto;
+}
+
+.links-right-icons > p, .links-left-icons > p {
+  margin: 0;
+  padding: 0;
+}
+
 .divider {
   border: 0;
   height: 1px;
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.publications {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.publication {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.publication-thumb {
+  width: 110px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.publication-info {
+  flex: 1;
+}
+
+.publication-info > p {
+  margin: 0 0 4px 0;
+}
+
+.publication-title {
+  font-weight: 700;
+}
+
+.publication-meta {
+  font-size: 15px;
+}
+
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 15px;
+}
+
+.press {
+  margin: 0;
+  padding-left: 20px;
+  font-family: "Livvic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.press-item {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.press-meta {
+  color: #555;
+}
+
+.publication-award {
+  display: inline-block;
+  padding: 1px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8a6d00;
+  background: #fdf3cf;
+  border: 1px solid #e0b400;
+  border-radius: 999px;
 }
 
 @media (min-width: 1200px) {
@@ -179,10 +278,13 @@ button > p {
     display: block;
     overflow: hidden;
   }
-  .photo {  
+  .photo {
     float: left;
     display: block;
     max-width: 50%;
+  }
+  .links-left-icons {
+    width: 50%;
   }
   .links-right {
     display: none;
@@ -190,10 +292,13 @@ button > p {
 }
 
 @media (min-width: 820px) and (max-width: 1200px) {
-  .photo {  
+  .photo {
     float: left;
     display: block;
     max-width: 35%;
+  }
+  .links-left-icons {
+    width: 35%;
   }
 }
 

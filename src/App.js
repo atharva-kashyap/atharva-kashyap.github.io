@@ -1,5 +1,14 @@
 import './App.css';
-import highQualityImage from './ask5.jpg'; // new JPG image
+
+// images
+import highQualityImage from './ask5.jpg';
+import sff2022 from './publication-images/sff-2022.jpg'
+import hridemo2024 from './publication-images/hri-demo24.jpg'
+import hri25feeding from './publication-images/hri25-feeding.png'
+import chi2026 from './publication-images/chi2026.jpg'
+import softwarex2026 from './publication-images/softwarex-2026.jpg'
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faGraduationCap, faFile, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -19,8 +28,121 @@ function App() {
     setIsOther(newValue);
   };
 
+  // Underline "A. Kashyap" / "A Kashyap" / "AS Kashyap" / "A. S. Kashyap", etc.
+  const kashyapPattern = /([A-Z](?:\.?\s?[A-Z])*\.?\s+Kashyap)/g;
+  const highlightAuthor = (authors) =>
+    authors.split(kashyapPattern).map((part, i) =>
+      new RegExp(`^${kashyapPattern.source}$`).test(part) ? <u key={i}>{part}</u> : part
+    );
+
+  // TODO: replace these placeholder publications + thumbnails with real ones.
+  // paper / video / website / award are all optional — only the ones you set will show.
+  // e.g. add  award: "Best Paper Award"  to an entry to show an award badge.
+  const publications = [
+    {
+      title: "Speak2Scene: Voice-based Storyboarding",
+      authors: "AS Kashyap, P Alves-Oliveira",
+      venue: "SoftwareX, 34, 102628",
+      year: 2026,
+      image: softwarex2026,
+      paper: "https://doi.org/10.1016/j.softx.2026.102628",
+      video: "https://youtu.be/tfez8F_uL9E?si=7516rRB4kgOBzrtv",
+      website: "https://github.com/studiorobot/Speak2Scene/tree/v2-softwarex"
+    },
+    {
+      title: "Robot-Assisted Social Dining as a White Glove Service",
+      authors: "AS Kashyap, UA Morkute, P Alves-Oliveira",
+      venue: "Conference on Human Factors in Computing Systems (CHI)",
+      year: 2026,
+      image: chi2026,
+      paper: "https://dl.acm.org/doi/full/10.1145/3772318.3790481",
+      video: "https://www.youtube.com/watch?v=JKJiZffJZ6Q",
+    },
+    {
+      title: "Lessons learned from designing and evaluating a robot-assisted feeding system for out-of-lab use",
+      authors: "A Nanavati, EK Gordon, TAK Faulkner, YR Song, J Ko, T Schrenk, V Nguyen, BH Zhu, H Bolotski, A Kashyap, S Kutty, R Karim, L Rainbolt, R Scalise, H Song, R Qu, M Cakmak, SS Srinivasa",
+      venue: "ACM/IEEE International Conference on Human-Robot Interaction (HRI)",
+      year: 2025,
+      image: hri25feeding,
+      paper: "https://ieeexplore.ieee.org/document/10974182",
+      website: "https://robotfeeding.io/publications/hri25a/",
+      award: "Best Systems Paper Award Finalist",
+    },
+    {
+      title: "An adaptable, safe, and portable robot-assisted feeding system",
+      authors: "EK Gordon, RK Jenamani, A Nanavati, Z Liu, D Stabile, X Dai, T Bhattacharjee, T Schrenk, J Ko, H Bolotski, R Karim, A Kashyap, BH Zhu, TK Faulkner, SS Srinivasa",
+      venue: "ACM/IEEE International Conference on Human-Robot Interaction (HRI), Demo",
+      year: 2024,
+      image: hridemo2024,
+      paper: "https://doi.org/10.1145/3610978.3641085",
+      award: "Best Demo Award",
+    },
+    {
+      title: "Vibration Reduction Using Material Jetted Parts for Sander Grips",
+      authors: "S Kandukuri, A Kashyap, J Lipton",
+      venue: "Solid Freeform Fabrication",
+      year: 2022,
+      image: sff2022,
+      paper: "https://utw10945.utweb.utexas.edu/sites/default/files/2022/Vibration%20Reduction%20Using%20Material%20Jetted%20Parts%20fo.pdf",
+    },
+  ];
+
+  const publications_content = (
+    <div className="publications">
+      {publications.map((pub, i) => (
+        <div className="publication" key={i}>
+          <img className="publication-thumb" src={pub.image} alt={pub.title} />
+          <div className="publication-info">
+            <p className="publication-title">{pub.title}</p>
+            <p className="publication-meta">{highlightAuthor(pub.authors)}</p>
+            <p className="publication-meta"><i>{pub.venue}</i>, {pub.year}</p>
+            <p className="publication-links">
+              {pub.paper && <a href={pub.paper} target="_blank" rel="noreferrer">Paper</a>}
+              {pub.video && <a href={pub.video} target="_blank" rel="noreferrer">Video</a>}
+              {pub.website && <a href={pub.website} target="_blank" rel="noreferrer">Website</a>}
+              {pub.award && <span className="publication-award">{pub.award}</span>}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // TODO: confirm/replace these press articles.
+  const press = [
+    {
+      outlet: "UW News",
+      title: "Assistive feeding robot gets tested outside the lab",
+      year: 2025,
+      link: "https://www.washington.edu/news/2025/03/04/assistive-feeding-robot-gets-tested-outside-the-lab/",
+    },
+    {
+      outlet: "GeekWire",
+      title: "UW computer science research event offers a glimpse of the future at the dawn of AI",
+      year: 2023,
+      link: "https://www.geekwire.com/2023/uw-computer-science-research-event-offers-a-glimpse-of-the-future-at-the-dawn-of-ai/",
+    },
+    {
+      outlet: "Allen School News",
+      title: "“There's so much great research here”: the case for open language models and other food for thought from the Allen School's 2023 Research Showcase",
+      year: 2023,
+      link: "https://news.cs.washington.edu/2023/11/21/theres-so-much-great-research-here-the-case-for-open-language-models-and-other-food-for-thought-from-the-allen-schools-2023-research-showcase/",
+    },
+  ];
+
+  const press_content = (
+    <ul className="press">
+      {press.map((item, i) => (
+        <li className="press-item" key={i}>
+          <a href={item.link} target="_blank" rel="noreferrer">{item.title}</a>
+          <span className="press-meta"> — {item.outlet}, {item.year}</span>
+        </li>
+      ))}
+    </ul>
+  );
+
   const prl_content_without_expand = (
-    <p>Previously, I was a research assistant at UW's <a href='https://personalrobotics.cs.washington.edu/' target="_blank">Personal Robotics Lab</a>, under the mentorship of Prof. <a href="https://goodrobot.ai/" target="_blank">Siddhartha Srinivasa</a>, PostDoc <a href="https://www.taylorkesslerfaulkner.com/" target="_blank">Taylor Kessler Faulkner</a>, and Ph.D. student <a href="https://amalnanavati.com/" target="_blank">Amal Nanavati</a>. I conducted Robot-Assisted Feeding research using the Assistive Dextrous Arm (ADA) robot. </p>
+    <p>Previously, I was a research assistant at UW's <a href='https://personalrobotics.cs.washington.edu/' target="_blank">Personal Robotics Lab</a>, under the mentorship of Prof. <a href="https://goodrobot.ai/" target="_blank">Siddhartha Srinivasa</a>, Dr. <a href="https://www.taylorkesslerfaulkner.com/" target="_blank">Taylor Kessler Faulkner</a>, and Dr. <a href="https://amalnanavati.com/" target="_blank">Amal Nanavati</a>. I conducted Robot-Assisted Feeding research using the Assistive Dextrous Arm (ADA) robot. </p>
   )
 
   const prl_content = (
@@ -35,7 +157,7 @@ function App() {
   );
 
   const ta_uw_content_without_expant = (
-    <p>Outside of research, I have a strong passion for teaching and CS education. At UW, I served as a lead Teaching Assistant (TA) for the Allen School's Introductory Programming (CSE 12x) classes for 7+ quarters.</p>
+    <p>I have a strong passion for teaching and CS education. At UW, I served as a lead Teaching Assistant (TA) for the Allen School's Introductory Programming (CSE 12x) classes for 7+ quarters.</p>
   );
 
   const ta_uw_content = (
@@ -57,32 +179,32 @@ function App() {
           <img src={highQualityImage} alt="High Quality" className="photo" />
         </div>
         <div className='links-left'>
-          <p><FontAwesomeIcon className="icon" icon={faEnvelope} size="lg" />&nbsp;&nbsp;&nbsp;Email: <a href='mailto:katharva@umich.edu'>katharva@umich.edu</a></p>
-          <p><FontAwesomeIcon className="icon" icon={faGithub} size="lg" />&nbsp;&nbsp;&nbsp;GitHub: <a href='https://www.github.com/atharva-kashyap/' target="_blank">atharva-kashyap</a></p>
-          <p><FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" />&nbsp;&nbsp;&nbsp;<a href='https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en' target="_blank">Google Scholar</a></p>
-          <p><FontAwesomeIcon className="icon" icon={faLinkedin} size="lg" />&nbsp;&nbsp;&nbsp;LinkedIn: <a href='https://www.linkedin.com/in/atharva-kashyap/' target="_blank">in/atharva-kashyap</a></p>
-          <p><FontAwesomeIcon className="icon" icon={faFile} size="lg" />&nbsp;&nbsp;&nbsp;<a href='https://drive.google.com/file/d/17x1r_ySEph4GeXJEb1oVfsbtvmCgOQIx/view?usp=sharing' target="_blank">1-page Resume</a> / <a href='https://drive.google.com/file/d/1sMsRdatpKY5pY6hJGkSg-NMXqe-3-EVH/view?usp=sharing' target="_blank">CV</a></p>
-          <p><i>Last Updated: March 2025</i></p>
+          <div className='links-left-icons'>
+            <p><a href='mailto:katharva@umich.edu'><FontAwesomeIcon className="icon" icon={faEnvelope} size="lg" /></a></p>
+            <p><a href='https://www.github.com/atharva-kashyap/' target="_blank"><FontAwesomeIcon className="icon" icon={faGithub} size="lg" /></a></p>
+            <p><a href='https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en' target="_blank"><FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" /></a></p>
+            <p><a href='https://www.linkedin.com/in/atharva-kashyap/' target="_blank"><FontAwesomeIcon className="icon" icon={faLinkedin} size="lg" /></a></p>
+            <p><a href='/CV' target="_blank"><FontAwesomeIcon className="icon" icon={faFile} size="lg" /></a></p>
+          </div>
+          <p><i>Last Updated: June 2026</i></p>
           <p><small>made with <FontAwesomeIcon icon={faHeart} /> by Atharva</small></p>
         </div>
         <div className='links-right'>
-          <p>Email: <a href='mailto:katharva@umich.edu'>katharva@umich.edu</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faEnvelope} size="lg" /></p>
-          <p>GitHub: <a href='https://www.github.com/atharva-kashyap/' target="_blank">atharva-kashyap</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faGithub} size="lg" /></p>
-          <p><a href='https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en' target="_blank">Google Scholar</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" /></p>
-          <p>LinkedIn: <a href='https://www.linkedin.com/in/atharva-kashyap/' target="_blank">in/atharva-kashyap</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faLinkedin} size="lg" /></p>
-          <p><a href='https://drive.google.com/file/d/17x1r_ySEph4GeXJEb1oVfsbtvmCgOQIx/view?usp=sharing' target="_blank">1-page Resume</a> / <a href='https://drive.google.com/file/d/1sMsRdatpKY5pY6hJGkSg-NMXqe-3-EVH/view?usp=sharing' target="_blank">CV</a>&nbsp;&nbsp;&nbsp;<FontAwesomeIcon className="icon" icon={faFile} size="lg" /></p>
-          <p><i>Last Updated: March 2025</i></p>
+          <div className='links-right-icons'>
+            <p><a href='mailto:katharva@umich.edu'><FontAwesomeIcon className="icon" icon={faEnvelope} size="lg" /></a></p>
+            <p><a href='https://www.github.com/atharva-kashyap/' target="_blank"><FontAwesomeIcon className="icon" icon={faGithub} size="lg" /></a></p>
+            <p><a href='https://scholar.google.com/citations?user=JCoq_vAAAAAJ&hl=en' target="_blank"><FontAwesomeIcon className="icon" icon={faGraduationCap} size="lg" /></a></p>
+            <p><a href='https://www.linkedin.com/in/atharva-kashyap/' target="_blank"><FontAwesomeIcon className="icon" icon={faLinkedin} size="lg" /></a></p>
+            <p><a href='/CV' target="_blank"><FontAwesomeIcon className="icon" icon={faFile} size="lg" /></a></p>
+          </div>
+          <p><i>Last Updated: June 2026</i></p>
           <p><small>made with <FontAwesomeIcon icon={faHeart} /> by Atharva</small></p>
         </div>
       </div>
 
       <div className="right-column">
-        <AnimatedText />
-        <p>I am a first-year <strong>Robotics</strong> Ph.D student at the <a href='https://robotics.umich.edu/' target="_blank">University of Michigan</a>, advised by Dr. <a href='https://patricialvesoliveira.com/' target="_blank">Patricia Alves-Oliveira</a> and graciously supported by the Robotics Departmental Fellowship. My research interests broadly lie in Assistive Robotics and Human-Robot Interaction.</p>
-
-        <p>I completed my bachelor's degree in <strong>Computer Science</strong> from the <a href="https://www.cs.washington.edu/" target="_blank">Paul G. Allen School of Computer Science & Engineering</a> at the <a href='http://www.washington.edu/' target="_blank">University of Washington</a> (UW), Seattle. I also minored in <strong>Applied Mathematics</strong> and <strong>Education, Learning & Societies</strong>.</p>
-
-        <hr className="divider" />
+        {/* <AnimatedText /> */}
+        {/* <hr className="divider" /> */}
 
         <Box sx={{ width: '100%' }} style={{ "padding-left": "0px" }}>
           <Tabs
@@ -92,40 +214,57 @@ function App() {
             indicatorColor="primary"
             aria-label="secondary tabs example"
           >
-            <Tab value={0} label="Research" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
-            <Tab value={1} label="Teaching" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
-            <Tab value={2} label="Miscellaneous" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
+            <Tab value={0} label="About" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
+            <Tab value={1} label="Research" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
+            <Tab value={2} label="Teaching" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
+            <Tab value={3} label="Professional" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
+            <Tab value={4} label="Travel" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
           </Tabs>
         </Box>
         {isOther === 0 ? (
           <div>
-            <div>
-              <h3>Robot Studio</h3>
-              <p>Currently, I am a research assistant at UM's <a href='https://www.robotdesign.studio/' target="_blank">Robot Studio</a>, where my research focuses broadly on assistive robotics for people with physical disabilities, with an emphasis on using LLMs to personalize these systems based on user's changing needs.</p>
-            </div>
-            <CollapsibleSection title="Personal Robotics Lab" content_without_expand={prl_content_without_expand} content={prl_content} />
+            <p>I am a <strong>Robotics</strong> PhD candidate at the <a href='https://robotics.umich.edu/' target="_blank">University of Michigan</a> advised by Dr. <a href='https://patricialvesoliveira.com/' target="_blank">Patrícia Alves-Oliveira</a>. My current research focus is in the intersection of human-robot interaction, artificial intelligence, and healthcare.</p>
+
+            <p>My research leverages both qualitative and statistical methods. My recent work includes human-centered AI evaluation, healthcare datasets, experimental design, and the development of benchmark frameworks for assessing AI behavior, especially in the context of pluralistic perspectives on disabilities.</p>
+
+            <p>Prior to my PhD, I earned my bachelor's degree in <strong>Computer Science</strong> from the <a href="https://www.cs.washington.edu/" target="_blank">Paul G. Allen School of Computer Science & Engineering</a> at the <a href='http://www.washington.edu/' target="_blank">University of Washington</a>. I also minored in <strong>Applied Mathematics</strong> and <strong>Education, Learning & Societies</strong>. There, I conducted research with Dr. <a href='https://goodrobot.ai/' target="_blank">Siddhartha Srinivasa</a> on a <a href='https://robotfeeding.io/' target="_blank">robot-assisted feeding</a> project. I did software development with Dr. <a href='https://www.mayacakmak.io/home' target="_blank">Maya Cakmak</a> on a <a href='https://robotic-manipulation.sciencehub.uw.edu/' target="_blank">manipulation project</a> in collaboration with Amazon Robotics.</p>
+
+            <h3>Press</h3>
+            {press_content}
           </div>
         ) : (isOther === 1 ? (
           <div>
-            <CollapsibleSection title="TA for Intro Programming" content_without_expand={ta_uw_content_without_expant} content={ta_uw_content} />
+            <h3>Publications</h3>
+            {publications_content}
+            {/* <div>
+              <h3>Robot Studio</h3>
+              <p>Currently, I am a research assistant at the <a href='https://www.robotdesign.studio/' target="_blank">Robot Studio</a> Lab. I <b>design</b> interactions between humans and assistive robots and I <b>implement</b> robot systems that enable personalization.</p>
+            </div>
+            <CollapsibleSection title="Personal Robotics Lab" content_without_expand={prl_content_without_expand} content={prl_content} /> */}
           </div>
-        ) : (<div>
+        ) : (isOther === 2 ? (
           <div>
-            <h3>Amazon Robotics Manipulation Project</h3>
-            <p>During Summer 2022, I worked as a Software Development Engineering Intern on a Robotics project (at UW + Amazon Science Hub). I developed a web application to conduct evaluations. An evaluation entailed scanning and stowing Amazon products into bins and then allowing the robot to pick specified items from the bins. The web application served as a live interface (by displaying various bin metrics) for users to track the progress of the evaluation. [<a href='https://github.com/au-rmr/aurmr_inventory' target="_blank">GitHub</a>]</p>
+            <CollapsibleSection title="Teaching Assistant for Intro Programming" content_without_expand={ta_uw_content_without_expant} content={ta_uw_content} />
           </div>
+        ) : (isOther === 3 ? (
           <div>
-            <h3>Arc Security</h3>
-            <p>I served as the VP of Engineering for a local startup, Arc Security. I oversaw a team of 4 developers, managed timelines, and conducted user testing. We developed a product that consisted of mobile and web applications to foster real estate safety. The mobile app enabled agents to track their safety during on-site visits while the web app enabled managers to track agent safety. [<a href='https://github.com/arc-securitas/webapp' target="_blank">GitHub</a>]</p>
-          </div>
-          <div>
-            <h3>Other</h3>
-            <p>I served as the Technical Director of a UW organization, <a href='https://dubvelopersuw.org/' target="_blank">DUBvelopers</a>, where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
+            <div>
+              <h3>Amazon Robotics Manipulation Project</h3>
+              <p>During Summer 2022, I worked as a Software Development Engineering Intern on a Robotics project (at UW + Amazon Science Hub). I developed a web application to conduct evaluations. An evaluation entailed scanning and stowing Amazon products into bins and then allowing the robot to pick specified items from the bins. The web application served as a live interface (by displaying various bin metrics) for users to track the progress of the evaluation. [<a href='https://github.com/au-rmr/aurmr_inventory' target="_blank">GitHub</a>]</p>
+            </div>
+            <div>
+              <h3>Arc Security</h3>
+              <p>I served as the VP of Engineering for a local startup, Arc Security. I oversaw a team of 4 developers, managed timelines, and conducted user testing. We developed a product that consisted of mobile and web applications to foster real estate safety. The mobile app enabled agents to track their safety during on-site visits while the web app enabled managers to track agent safety. [<a href='https://github.com/arc-securitas/webapp' target="_blank">GitHub</a>]</p>
+            </div>
+            <div>
+              <h3>Other</h3>
+              <p>I served as the Technical Director of a UW organization, <a href='https://dubvelopersuw.org/' target="_blank">DUBvelopers</a>, where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
 
-            <p>I volunteered as a dog walker at <a href='https://www.seattlehumane.org/' target="_blank">Seattle Humane</a> in Bellevue, WA. Previously, I have also helped with Dog/Puppy training classes. Prior to that, I was an Education volunteer supporting the Humane Teen Club (HTC) for school students to explore animal welfare topics. Even before that, I, myself, was a HTC member!</p>
+              <p>I volunteered as a dog walker at <a href='https://www.seattlehumane.org/' target="_blank">Seattle Humane</a> in Bellevue, WA. Previously, I have also helped with Dog/Puppy training classes. Prior to that, I was an Education volunteer supporting the Humane Teen Club (HTC) for school students to explore animal welfare topics. Even before that, I, myself, was a HTC member!</p>
+            </div>
           </div>
-        </div>)
-        )}
+          ) : (<p>I enjoy travelling and exploring new places.</p>)
+        )))}
       </div>
     </div>
   );
