@@ -34,8 +34,25 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AnimatedText from './AnimatedText';
 import { Block } from '@mui/icons-material';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import CollapsibleSection from './CollapsibleSection';
+
+// Your GoatCounter subdomain code (the part before .goatcounter.com).
+const GOATCOUNTER_CODE = "atharva-web";
+
+function VisitorCount() {
+  const [count, setCount] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => data && setCount(data.count_unique || data.count))
+      .catch(() => {});
+  }, []);
+
+  if (!count) return null;
+  return <p><small>{count} visitors</small></p>;
+}
 
 function App() {
   const [isOther, setIsOther] = useState(0);
@@ -254,6 +271,7 @@ function App() {
           </div>
           <p><i>Last Updated: June 2026</i></p>
           <p><small>made with <FontAwesomeIcon icon={faHeart} /> by Atharva</small></p>
+          <VisitorCount />
         </div>
         <div className='links-right'>
           <div className='links-right-icons'>
@@ -265,6 +283,7 @@ function App() {
           </div>
           <p><i>Last Updated: June 2026</i></p>
           <p><small>made with <FontAwesomeIcon icon={faHeart} /> by Atharva</small></p>
+          <VisitorCount />
         </div>
       </div>
 
@@ -329,7 +348,7 @@ function App() {
         ) : (
           <div>
             <h3>Web Dev Mentor</h3>
-            <p>I served as the Technical Director of a UW organization, <a href='https://dubvelopersuw.org/' target="_blank">DUBvelopers</a>, where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
+            <p>I served as the Technical Director of a UW organization, <a href='https://www.instagram.com/webimpactuw/' target="_blank">DUBvelopers</a> (now, WebImpact), where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
 
             <h3>Random...</h3>
             <p>I love dogs! I walk dogs at <a href='https://www.hshv.org/' target="_blank">HSHV</a> (previously, at <a href='https://detroitdogrescue.com/' target="_blank">DDR</a> and <a href='https://www.seattlehumane.org/' target="_blank">SH</a>). I have also helped with dog training classes, been an education volunteer supporting the Humane Teen Club (HTC) to explore animal welfare topics. Before that, I, myself, was a HTC member!</p>
