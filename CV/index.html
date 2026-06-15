@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Atharva Kashyap — CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      .pdf-frame {
+        border: 0;
+        width: 100%;
+        height: 100vh;
+        display: block;
+      }
+      .fallback {
+        font-family: sans-serif;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <object class="pdf-frame" data="./cv.pdf" type="application/pdf">
+      <iframe class="pdf-frame" src="./cv.pdf" title="Atharva Kashyap CV"></iframe>
+      <p class="fallback">
+        Your browser can't display the PDF inline.
+        <a href="./cv.pdf">Download the CV here</a>.
+      </p>
+    </object>
+  </body>
+</html>
