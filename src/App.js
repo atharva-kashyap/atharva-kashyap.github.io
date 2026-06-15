@@ -255,6 +255,9 @@ function App() {
             onChange={handleChange}
             textColor="primary"
             indicatorColor="primary"
+            variant="scrollable"
+            scrollButtons="auto"
+            allowScrollButtonsMobile
             aria-label="secondary tabs example"
           >
             <Tab value={0} label="About" style={{ "font-size": "18px", "font-family": "'Podkova', 'serif'", "font-weight": "700", "display": "inline", "textTransform": "none" }} />
