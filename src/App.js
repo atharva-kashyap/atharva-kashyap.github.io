@@ -8,6 +8,16 @@ import hri25feeding from './publication-images/hri25-feeding.png'
 import chi2026 from './publication-images/chi2026.jpg'
 import softwarex2026 from './publication-images/softwarex-2026.jpg'
 
+// travel images
+import bcnMediterranean from './travel-images/bcn-mediterranean.jpg'
+import bcnMontserrat from './travel-images/bcn-montserrat.jpg'
+import bcnSagrada from './travel-images/bcn-sagrada.jpg'
+import lisbonBelem from './travel-images/lisbon-belem.jpg'
+import lisbonNight from './travel-images/lisbon-night.jpg'
+import lisbonTram from './travel-images/lisbon-tram.jpg'
+import portoAtlantic from './travel-images/porto-atlantic.jpg'
+import portoScenery from './travel-images/porto-scenery.jpg'
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faGraduationCap, faFile, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +28,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AnimatedText from './AnimatedText';
 import { Block } from '@mui/icons-material';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import CollapsibleSection from './CollapsibleSection';
 
 function App() {
@@ -141,6 +151,39 @@ function App() {
     </ul>
   );
 
+  const travel_images = [
+    { src: bcnMontserrat, alt: "Montserrat, Barcelona" },
+    { src: bcnSagrada, alt: "Sagrada Família, Barcelona" },
+    { src: bcnMediterranean, alt: "Mediterranean coast, Barcelona" },
+    { src: lisbonTram, alt: "Lisbon" },
+    { src: lisbonBelem, alt: "Belém Tower, Lisbon" },
+    { src: lisbonNight, alt: "Lisbon at night" },
+    { src: portoScenery, alt: "Porto" },
+    { src: portoAtlantic, alt: "Atlantic coast, Porto" },
+  ];
+
+  // Shuffle once per page load so the collage rearranges on each refresh.
+  const shuffled_travel_images = useMemo(() => {
+    const arr = [...travel_images];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const travel_content = (
+    <div className="travel-collage">
+      {shuffled_travel_images.map((img, i) => (
+        <figure className="travel-item" key={img.alt}>
+          <img className="travel-photo" src={img.src} alt={img.alt} />
+          <figcaption className="travel-caption">{img.alt}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+
   const prl_content_without_expand = (
     <p>Previously, I was a research assistant at UW's <a href='https://personalrobotics.cs.washington.edu/' target="_blank">Personal Robotics Lab</a>, under the mentorship of Prof. <a href="https://goodrobot.ai/" target="_blank">Siddhartha Srinivasa</a>, Dr. <a href="https://www.taylorkesslerfaulkner.com/" target="_blank">Taylor Kessler Faulkner</a>, and Dr. <a href="https://amalnanavati.com/" target="_blank">Amal Nanavati</a>. I conducted Robot-Assisted Feeding research using the Assistive Dextrous Arm (ADA) robot. </p>
   )
@@ -250,21 +293,25 @@ function App() {
           <div>
             <div>
               <h3>Amazon Robotics Manipulation Project</h3>
-              <p>During Summer 2022, I worked as a Software Development Engineering Intern on a Robotics project (at UW + Amazon Science Hub). I developed a web application to conduct evaluations. An evaluation entailed scanning and stowing Amazon products into bins and then allowing the robot to pick specified items from the bins. The web application served as a live interface (by displaying various bin metrics) for users to track the progress of the evaluation. [<a href='https://github.com/au-rmr/aurmr_inventory' target="_blank">GitHub</a>]</p>
+              <p>During Summer 2022, I worked as a Software Development Engineering Intern on a <a href='https://robotic-manipulation.sciencehub.uw.edu/' target="_blank">robotics manipulation project</a> (at UW + Amazon Science Hub). I developed a web application to conduct evaluations. An evaluation entailed scanning and stowing Amazon products into bins and then allowing the robot to pick specified items from the bins. The web application served as a live interface (by displaying various bin metrics) for users to track the progress of the evaluation. [<a href='https://github.com/au-rmr/aurmr_inventory' target="_blank">GitHub</a>]</p>
             </div>
             <div>
               <h3>Arc Security</h3>
-              <p>I served as the VP of Engineering for a local startup, Arc Security. I oversaw a team of 4 developers, managed timelines, and conducted user testing. We developed a product that consisted of mobile and web applications to foster real estate safety. The mobile app enabled agents to track their safety during on-site visits while the web app enabled managers to track agent safety. [<a href='https://github.com/arc-securitas/webapp' target="_blank">GitHub</a>]</p>
+              <p>I served as the VP of Engineering for a local startup (now, defunct), <a href='https://dubvelopersuw.org/' target="_blank">Arc Security</a>. I oversaw a team of 4 developers, managed timelines, and conducted user testing. We developed a product that consisted of mobile and web applications to foster real estate safety. The mobile app enabled agents to track their safety during on-site visits while the web app enabled managers to track agent safety. [<a href='https://github.com/arc-securitas/webapp' target="_blank">GitHub</a>]</p>
             </div>
             <div>
               <h3>Other</h3>
               <p>I served as the Technical Director of a UW organization, <a href='https://dubvelopersuw.org/' target="_blank">DUBvelopers</a>, where I supported in putting together Web Development workshops for 60+ beginners to acquire skills necessary to provide <i>pro bono</i> web development services to local small businesses.</p>
 
-              <p>I volunteered as a dog walker at <a href='https://www.seattlehumane.org/' target="_blank">Seattle Humane</a> in Bellevue, WA. Previously, I have also helped with Dog/Puppy training classes. Prior to that, I was an Education volunteer supporting the Humane Teen Club (HTC) for school students to explore animal welfare topics. Even before that, I, myself, was a HTC member!</p>
+              <p>I love dogs. I walk dogs at <a href='https://www.hshv.org/' target="_blank">HSHV</a> (previously, at <a href='https://detroitdogrescue.com/' target="_blank">DDR</a> and <a href='https://www.seattlehumane.org/' target="_blank">SH</a>). I have also helped with dog training classes, been an education volunteer supporting the Humane Teen Club (HTC) to explore animal welfare topics. Before that, I, myself, was a HTC member!</p>
             </div>
           </div>
-          ) : (<p>I enjoy travelling and exploring new places.</p>)
-        )))}
+        ) : (
+          <div>
+            <p>I enjoy travelling, taking pictures, and exploring new places.</p>
+            {travel_content}
+          </div>
+        ))))}
       </div>
     </div>
   );

@@ -198,6 +198,55 @@ button > p {
   font-size: 15px;
 }
 
+.travel-collage {
+  column-count: 3;
+  column-gap: 10px;
+  margin-top: 16px;
+}
+
+.travel-item {
+  position: relative;
+  margin: 0 0 10px 0;
+  break-inside: avoid;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.travel-photo {
+  width: 100%;
+  display: block;
+}
+
+.travel-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 12px;
+  color: #fff;
+  font-family: "Livvic", sans-serif;
+  font-size: 15px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.travel-item:hover .travel-caption {
+  opacity: 1;
+}
+
+@media (max-width: 800px) {
+  .travel-collage {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .travel-collage {
+    column-count: 1;
+  }
+}
+
 .press {
   margin: 0;
   padding-left: 20px;
