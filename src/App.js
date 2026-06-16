@@ -34,7 +34,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AnimatedText from './AnimatedText';
 import { Block } from '@mui/icons-material';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import CollapsibleSection from './CollapsibleSection';
 
 // Your GoatCounter subdomain code (the part before .goatcounter.com).
@@ -52,6 +52,53 @@ function VisitorCount() {
 
   if (!count) return null;
   return <p><small>{count} visitors</small></p>;
+}
+
+// One image tile in a masonry collage. Landscape images (ratio > 1.3) span two
+// columns; every tile keeps its natural aspect ratio (no cropping) and its grid
+// row-span is computed from its rendered height so tiles pack tightly.
+const COLLAGE_ROW_UNIT = 8; // px, must match grid-auto-rows
+const COLLAGE_GAP = 10; // px, must match grid gap
+
+function CollageImage({ src, alt, showCaption }) {
+  const figureRef = useRef(null);
+  const [wide, setWide] = useState(false);
+  const [rowSpan, setRowSpan] = useState(null);
+
+  useEffect(() => {
+    const el = figureRef.current;
+    if (!el) return;
+    const recompute = () => {
+      const h = el.getBoundingClientRect().height;
+      if (h) {
+        setRowSpan(Math.ceil((h + COLLAGE_GAP) / (COLLAGE_ROW_UNIT + COLLAGE_GAP)));
+      }
+    };
+    recompute();
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(recompute);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [wide]);
+
+  return (
+    <figure
+      ref={figureRef}
+      className={`travel-item${wide ? " wide" : ""}`}
+      style={rowSpan ? { gridRowEnd: `span ${rowSpan}` } : undefined}
+    >
+      <img
+        className="travel-photo"
+        src={src}
+        alt={alt}
+        onLoad={(e) => {
+          const { naturalWidth, naturalHeight } = e.target;
+          setWide(!!naturalHeight && naturalWidth / naturalHeight > 1.3);
+        }}
+      />
+      {showCaption && <figcaption className="travel-caption">{alt}</figcaption>}
+    </figure>
+  );
 }
 
 function App() {
@@ -206,20 +253,15 @@ function App() {
   const dogs_content = (
     <div className="travel-collage">
       {dog_images.map((img, i) => (
-        <figure className="travel-item" key={i}>
-          <img className="travel-photo" src={img.src} alt={img.alt} />
-        </figure>
+        <CollageImage src={img.src} alt={img.alt} key={i} />
       ))}
     </div>
   );
 
   const travel_content = (
     <div className="travel-collage">
-      {shuffled_travel_images.map((img, i) => (
-        <figure className="travel-item" key={img.alt}>
-          <img className="travel-photo" src={img.src} alt={img.alt} />
-          <figcaption className="travel-caption">{img.alt}</figcaption>
-        </figure>
+      {shuffled_travel_images.map((img) => (
+        <CollageImage src={img.src} alt={img.alt} showCaption key={img.alt} />
       ))}
     </div>
   );
